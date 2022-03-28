@@ -7,6 +7,7 @@ import AuthenticatedApp from './AuthenticatedApp'
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
+  
     useEffect(() => {
       fetch('/me').then(res => {
         if (res.ok) {
