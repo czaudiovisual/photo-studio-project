@@ -11,7 +11,7 @@ User.destroy_all
 Appointment.destroy_all
 Client.destroy_all
 
-user = User.create!(id: 1, name: 'Christian', photo_style: "Portraits", username: "christian@hello.com", password_digest: "password")
+user = User.create!(id: 1, name: 'Christian', photo_style: "Portraits", username: "christian@hello.com", password: "password")
 
 client = Client.create!(id: 1, name: 'Maye', number: '305-262-8080', img_url:'https://images.pexels.com/photos/428321/pexels-photo-428321.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', email: 'maye@hello.com', appointment_id: 1)
 
@@ -19,5 +19,3 @@ appointment = Appointment.create!(id: 1, user_id: 1, style: "Portraits", time: '
 
 
 puts "seeding done ✅✅✅"
-
-
