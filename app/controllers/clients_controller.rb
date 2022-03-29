@@ -34,6 +34,6 @@ class ClientsController < ApplicationController
     end
 
     def client_params
-        params.permit(:name, :number, :img_url, :email, :appointment_id)
+        params.permit(:client_name, :number, :img_url, :email, :appointment_id)
     end
 end

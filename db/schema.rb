@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2022_03_25_001140) do
   end
 
   create_table "clients", force: :cascade do |t|
-    t.string "name"
+    t.string "client_name"
     t.string "number"
     t.string "img_url"
     t.string "email"
