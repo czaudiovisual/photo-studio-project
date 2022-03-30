@@ -22,7 +22,7 @@ function App() {
       }
     })
   }, [])
-  
+
   function addClient(client) {
     setClients([...clients, client])
 
@@ -38,18 +38,18 @@ function App() {
 
   return (
     <div className="App">
-        <span>Logged in as {currentUser.username} <Button variant="danger" size="sm" onClick={handleLogoutClick}>Logout</Button></span>
-       <nav>
+      <span>Logged in as {currentUser.username} <Button variant="danger" size="sm" onClick={handleLogoutClick}>Logout</Button></span>
+      <nav>
         <NavigationBar />
       </nav>
       <div>
-      <Router>
+        <Router>
           <Switch>
             <Route exact path="/" component={ClientsComponent}>
               <ClientsComponent currentUser={currentUser} />
             </Route>
             <Route exact path="/clients/new">
-              <ClientForm key={ClientsComponent.id} currentUser={currentUser} addClient={addClient}/>
+              <ClientForm key={ClientsComponent.id} currentUser={currentUser} addClient={addClient} />
             </Route>
           </Switch>
         </Router>

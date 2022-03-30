@@ -33,7 +33,7 @@ function ClientForm({ currentUser, addClient }) {
                     addClient(client)
                     setSubmitted(true)
                 })
-            } 
+            }
         })
     }
 
@@ -44,7 +44,7 @@ function ClientForm({ currentUser, addClient }) {
                     <div className="form-outsider">
                         <div className="form-container">
                             <form className="register-form" onSubmit={handleOnSubmit}>
-                                <h5>Hello</h5>
+                                <h5>Add a New CLient</h5>
                                 <input
                                     onChange={(event) => setClientName(event.target.value)}
                                     className="form-field"

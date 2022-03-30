@@ -17,7 +17,6 @@ body {
 }
 
 .photo-size {
-  
   width: 10%;
   margin-right: 20px;
   border-radius: 20%;
@@ -26,7 +25,7 @@ body {
 .body-app {
   display: flex;
   min-height: 100vh;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -56,4 +55,16 @@ body {
   font-size: 16px;
   border: 0;
   background-color: rgb(238, 238, 238);
+}
+
+.card-box {
+  margin: 10px 10px 10px;
+  box-shadow: 0 0px 20px 0 rgba(0,0,0,0.2);
+  float: left;
+  transition: 0.3s;
+  padding: 8px; 
+}
+
+.body-client{
+  margin-left: 9%;
 }
