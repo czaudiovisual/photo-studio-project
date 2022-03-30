@@ -1,7 +1,10 @@
+import { useState } from "react"
 import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
-const ClientCard = ({ client, removeClient }) => {
+const ClientCard = ({ client, removeClient, editClient }) => {
+    const [editClientForm, setEditClientForm] = useState(false)
+    const [editButton, setEditButton] = useState("Show edit Form")
 
     function handleDeleteClient(client) {
         fetch(`/clients/${client.id}`, {
@@ -9,6 +12,11 @@ const ClientCard = ({ client, removeClient }) => {
         }).then(res => {
             removeClient(client)
         })
+    }
+
+    function handleEditButtonClick() {
+        setEditClientForm(!editClientForm)
+        !editClientForm ? setEditClientForm("Hide Edit Form") : setEditButton("Show edit Form")
     }
 
     return (
@@ -19,8 +27,11 @@ const ClientCard = ({ client, removeClient }) => {
                     <Card.Body>
                         <Card.Title>{client.client_name}</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">Number: {client.number}</Card.Subtitle>
-                        <Card.Subtitle className="mb-2 text-muted">E-mail: {client.email}</Card.Subtitle>
-                        <Button variant="danger" size="sm" onClick={event => handleDeleteClient(client)}>Delete</Button>
+                        <Card.Subtitle className="mb-4 text-muted">E-mail: {client.email}</Card.Subtitle>
+                        <div className="d-grid gap-2">
+                <Button variant="danger" size="sm" onClick={event => handleDeleteClient(client)}>Delete</Button>
+                <Button variant="primary" size="sm" onClick={event => handleEditButtonClick()}>{editButton}</Button>
+                        </div>
                     </Card.Body>
                 </Card>
             </div>

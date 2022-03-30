@@ -39,12 +39,15 @@ function ClientForm({ currentUser, addClient }) {
 
     return (
         <div>
+            <br />
+            <br />
+            <h1>Add Client</h1>
+            <br />
             {submitted ? <Redirect to="/" /> :
-                <div className="body-app">
+                <div>
                     <div className="form-outsider">
                         <div className="form-container">
                             <form className="register-form" onSubmit={handleOnSubmit}>
-                                <h5>Add a New CLient</h5>
                                 <input
                                     onChange={(event) => setClientName(event.target.value)}
                                     className="form-field"
