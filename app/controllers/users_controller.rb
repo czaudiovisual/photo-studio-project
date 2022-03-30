@@ -8,11 +8,10 @@ class UsersController < ApplicationController
     end
 
     def show
-        users = User.find(params[:id])
-        render json: users, status: :ok
+      render json: @current_user, status: :ok
     end
 
-   def create
+    def create
         user = User.create(user_params)
         if user.valid?
           render json: user, status: :created

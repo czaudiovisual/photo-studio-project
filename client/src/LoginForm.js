@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Alert } from "react-bootstrap"
+import { useHistory } from "react-router-dom";
 import { Button } from 'react-bootstrap'
 import SignupForm from "./SignupForm"
 
@@ -7,6 +8,7 @@ function LoginForm({ setCurrentUser }) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("");
     const [error, setError] = useState("")
+    const history = useHistory();
 
 
     function handleOnSubmit(event) {
@@ -24,6 +26,7 @@ function LoginForm({ setCurrentUser }) {
             if (res.ok) {
                 res.json().then(currentUser => {
                     setCurrentUser(currentUser)
+                    history.push('/')
                 })
             } else {
                 res.json().then((error => setError(error.error)))
