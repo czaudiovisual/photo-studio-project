@@ -5,7 +5,7 @@ function NavigationBar() {
 
     return (
         <div>
-            <Navbar bg="primary" variant="dark">
+            <Navbar bg="dark" variant="dark">
                 <Container>
                     <img className="photo-size" alt="icon" src="https://smallimg.pngkey.com/png/small/118-1185948_710-cartoon-illustration-of-hand-with-camera-clipart.png" />
                     <Navbar.Brand>Photo Studio Manager</Navbar.Brand>

@@ -49,7 +49,7 @@ function App() {
               <ClientsComponent currentUser={currentUser} />
             </Route>
             <Route exact path="/clients/new">
-              <ClientForm key={clients.id} currentUser={currentUser} addClient={addClient}/>
+              <ClientForm key={ClientsComponent.id} currentUser={currentUser} addClient={addClient}/>
             </Route>
           </Switch>
         </Router>

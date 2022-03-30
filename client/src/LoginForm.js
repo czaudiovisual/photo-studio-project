@@ -25,8 +25,8 @@ function LoginForm({ setCurrentUser }) {
 
     return (
         <div className="body-app">
-            <div className="form-outsider">
-                <div className="form-container">
+        <div className="form-outsider">
+            <div className="form-container">
                     <h3 className="App">Login</h3>
                     <form className="register-form" onSubmit={handleOnSubmit}>
                         <input
@@ -45,6 +45,7 @@ function LoginForm({ setCurrentUser }) {
                             id="password"
                             placeholder="Password"
                         />
+                        <br/>
                         <Button variant="success" size="sm" type="submit">Login</Button>{' '}
                     </form>
                     <br />
