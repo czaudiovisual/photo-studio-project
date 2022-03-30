@@ -11,6 +11,7 @@ function NavigationBar() {
                     <Navbar.Brand>Photo Studio Manager</Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="/">Clients</Nav.Link>
+                        <Nav.Link href="/clients/new">Add Client</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

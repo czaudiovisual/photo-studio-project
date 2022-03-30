@@ -5,6 +5,7 @@ import LoginForm from './LoginForm'
 import NavigationBar from './components/NavigationBar';
 import { Button } from 'react-bootstrap'
 import ClientsComponent from './components/ClientsComponent'
+import ClientForm from './components/ClientForm'
 
 
 
@@ -22,6 +23,11 @@ function App() {
     })
   }, [])
   
+  function addClient(client) {
+    setClients([...clients, client])
+
+  }
+
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then(res => {
       setCurrentUser(null)
@@ -41,6 +47,9 @@ function App() {
           <Switch>
             <Route exact path="/" component={ClientsComponent}>
               <ClientsComponent currentUser={currentUser} />
+            </Route>
+            <Route exact path="/clients/new">
+              <ClientForm key={clients.id} currentUser={currentUser} addClient={addClient}/>
             </Route>
           </Switch>
         </Router>
