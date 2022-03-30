@@ -1,18 +1,10 @@
 import React, { useState } from "react"
-import { Alert } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
 
 function SignupForm({ setCurrentUser }) {
     const [name, setName] = useState("")
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [errors, setErrors] = useState("")
-
-    const displayError = () => {
-        return errors.map(error => {
-            return <div className="alert alert-danger" role="alert">{error}</div>
-        })
-    }
 
     function handleOnSubmit(event) {
         event.preventDefault()
@@ -27,13 +19,9 @@ function SignupForm({ setCurrentUser }) {
                 password: password,
             }),
         }).then((res) => {
-            if (res.ok) {
-                res.json().then(currentUser => {
-                    setCurrentUser(currentUser)
-                })
-            } else {
-                res.json().then((errors => setErrors(errors.errors)))
-            }
+            res.json().then(currentUser => {
+                setCurrentUser(currentUser)
+            })
         })
     }
 
@@ -42,9 +30,6 @@ function SignupForm({ setCurrentUser }) {
             <form className="register-form" onSubmit={handleOnSubmit}>
                 <h5 className="App">Create an account</h5>
                 <h3 className="App">Signup</h3>
-                {errors ?
-                    <Alert variant="danger">{errors && displayError()}</Alert> : <Alert variant="danger="></Alert>
-                }
                 <input
                     onChange={(event) => setName(event.target.value)}
                     className="form-field"

@@ -1,15 +1,10 @@
 import React, { useState } from "react"
-import { Alert } from "react-bootstrap"
-import { useHistory } from "react-router-dom";
 import { Button } from 'react-bootstrap'
 import SignupForm from "./SignupForm"
 
 function LoginForm({ setCurrentUser }) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("")
-    const history = useHistory();
-
 
     function handleOnSubmit(event) {
         event.preventDefault()
@@ -22,17 +17,11 @@ function LoginForm({ setCurrentUser }) {
                 username: username,
                 password: password,
             }),
-        }).then((res) => {
-            if (res.ok) {
-                res.json().then(currentUser => {
-                    setCurrentUser(currentUser)
-                    history.push('/')
+        }).then((res) => { res.json().then(currentUser => { setCurrentUser(currentUser)
                 })
-            } else {
-                res.json().then((error => setError(error.error)))
-            }
         })
     }
+
 
     return (
         <div className="body-app">
@@ -40,9 +29,6 @@ function LoginForm({ setCurrentUser }) {
                 <div className="form-container">
                     <h3 className="App">Login</h3>
                     <form className="register-form" onSubmit={handleOnSubmit}>
-                        {error ?
-                            <Alert variant="danger">{error}</Alert> : <Alert variant="danger="></Alert>
-                        }
                         <input
                             onChange={(event) => setUsername(event.target.value)}
                             className="form-field"
