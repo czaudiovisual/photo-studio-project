@@ -1,13 +1,14 @@
 
 import React, { useState } from "react"
 import { Redirect } from "react-router-dom"
-import { Button } from 'react-bootstrap'
+import { Button, Alert } from 'react-bootstrap'
 
 function ClientForm({ currentUser, addClient }) {
     const [client_name, setClientName] = useState("")
     const [number, setNumber] = useState("")
     const [img_url, setImgUrl] = useState("")
     const [email, setEmail] = useState("")
+    const [errors, setErrors] = useState("")
     const [submitted, setSubmitted] = useState(false)
 
     function handleOnSubmit(event) {
@@ -28,11 +29,24 @@ function ClientForm({ currentUser, addClient }) {
                 email,
                 user_id: currentUser.id
             }),
-        }).then(res => res.json())
-            .then(client => {
-                addClient(client)
-                setSubmitted(true)
-            })
+        }).then((response) => {
+            if (response.ok) {
+                response.json().then((cli) => {
+                    addClient(cli)
+                    setSubmitted(true)
+                })
+            } else {
+                response.json().then(errors => {
+                    setErrors(errors.errors)
+                })
+            }
+        })
+    }
+
+    const displayError = () => {
+        return errors.map(error => {
+            return <div className="alert alert-danger" role="alert">{error}</div>
+        })
     }
 
     return (
@@ -46,6 +60,9 @@ function ClientForm({ currentUser, addClient }) {
                     <div className="form-outsider">
                         <div className="form-container">
                             <form className="register-form" onSubmit={handleOnSubmit}>
+                            {errors ?
+                                    <Alert className="App" variant="danger">{errors && displayError()}</Alert> : <Alert variant="danger="></Alert>
+                                }
                                 <input
                                     onChange={(event) => setClientName(event.target.value)}
                                     className="form-field"
