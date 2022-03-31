@@ -5,6 +5,7 @@ import LoginForm from './LoginForm'
 import NavigationBar from './components/NavigationBar';
 import { Button } from 'react-bootstrap'
 import Clients from './components/Clients'
+import Appointments from './components/Appointments'
 import ClientForm from './components/ClientForm'
 
 
@@ -12,6 +13,7 @@ import ClientForm from './components/ClientForm'
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const [clients, setClients] = useState([])
+  // const [appointments, setAppointments] = useState([])
 
   useEffect(() => {
     fetch('/me').then(res => {
@@ -31,8 +33,11 @@ function App() {
 
   function addClient(client) {
     setClients([...clients, client])
-
   }
+
+  // function addAppointment(appointment) {
+  //   setAppointments([...appointments, appointment])
+  // }
 
 
   if (!currentUser) return <LoginForm setCurrentUser={setCurrentUser} />
@@ -47,10 +52,13 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/" component={Clients}>
-              <Clients currentUser={currentUser}/>
+              <Clients currentUser={currentUser} />
             </Route>
             <Route exact path="/clients/new">
               <ClientForm key={clients.id} currentUser={currentUser} addClient={addClient} />
+            </Route>
+            <Route exact path="/appointments" component={Appointments}>
+              <Appointments currentUser={currentUser} />
             </Route>
           </Switch>
         </Router>

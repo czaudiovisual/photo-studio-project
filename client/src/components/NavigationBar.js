@@ -12,6 +12,7 @@ function NavigationBar() {
                     <Nav className="me-auto">
                         <Nav.Link href="/">Clients</Nav.Link>
                         <Nav.Link href="/clients/new">Add Client</Nav.Link>
+                        <Nav.Link href="/appointments">Appointments</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
