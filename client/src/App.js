@@ -13,7 +13,8 @@ import ClientForm from './components/ClientForm'
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const [clients, setClients] = useState([])
-  // const [appointments, setAppointments] = useState([])
+  const [appointments, setAppointments] = useState([])
+
 
   useEffect(() => {
     fetch('/me').then(res => {

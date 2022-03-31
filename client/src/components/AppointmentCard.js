@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-// import ClientEditForm from "./ClientEditForm"
+import AppointmentEditForm from "./AppointmentEditForm"
 
 const AppointmentCard = ({ appointment, currentUser, appointmentEdit, removeAppointment}) => {
     const [appointmentEditForm, setAppointmentEditForm] = useState(false)
@@ -35,9 +35,7 @@ const AppointmentCard = ({ appointment, currentUser, appointmentEdit, removeAppo
                             <Button variant="danger" size="sm" onClick={event => handleDeleteAppointment(appointment)}>Delete</Button>
                             <Button variant="primary" size="sm" onClick={event => handleEditButton()}>{editButton}</Button>
                         </div>
-
-                        {/* {appointmentEditForm ? <ClientEditForm handleEditButtonClick={handleEditButtonClick} clientEdit={clientEdit} client={client} currentUser={currentUser}/> : null} */}
-                    
+                        {appointmentEditForm ? <AppointmentEditForm handleEditButton={handleEditButton} appointmentEdit={appointmentEdit} appointment={appointment} currentUser={currentUser}/> : null}
                     </Card.Body>
                 </Card>
             </div>

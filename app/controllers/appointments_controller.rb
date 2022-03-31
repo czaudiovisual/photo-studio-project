@@ -16,7 +16,7 @@ class AppointmentsController < ApplicationController
 
     def update
         appointment = find_appointment
-        appointment = Appointment.update!(appointment_params)
+        appointment.update!(appointment_params)
         render json: appointment, status: :ok
 
     end

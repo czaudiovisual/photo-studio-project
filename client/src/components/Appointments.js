@@ -4,16 +4,16 @@ import AppointmentCard from './AppointmentCard'
 function Appointments({ currentUser }) {
     const [appointments, setAppointments] = useState([])
 
-    // function removeAppointment(appointment) {
-    //     setAppointments((appointments) => appointments.filter(appoint => appoint.id !== appointment.id))
-    //   }
+    function removeAppointment(appointment) {
+        setAppointments((appointments) => appointments.filter(appoint => appoint.id !== appointment.id))
+      }
 
     function appointmentEdit(appointment) {
-        const edited = appointment.map(appoint => {
-            if (appointment.id === appoint.id) {
+        const edited = appointments.map(app => {
+            if (appointment.id === app.id) {
                 return appointment
             }
-            return appoint
+            return app
         })
         setAppointments(edited)
     }
@@ -26,7 +26,7 @@ function Appointments({ currentUser }) {
             })// eslint-disable-next-line 
     }, []) 
 
-    const renderAppointments = appointments?.map((appoint) => <AppointmentCard appointmentEdit={appointmentEdit} currentUser={currentUser} appointment={appoint} key={appoint.id}/>)
+    const renderAppointments = appointments?.map((appoint) => <AppointmentCard appointmentEdit={appointmentEdit} currentUser={currentUser} appointment={appoint} key={appoint.id} removeAppointment={removeAppointment}/>)
 
     return (
         <div className="App">
