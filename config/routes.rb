@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   
-  resources :users, only: [:index, :show, :create]
-  resources :clients, except: [:show]
-  resources :appointments, except: [:show]
+  resources :users
+  resources :clients
+  resources :appointments
 
+  post "/signup", to: "users#create"
   get "/me", to: "users#show"
   post "/login", to: "sessions#create"
-  post "/signup", to: "users#create"
   delete '/logout', to: 'sessions#destroy'
 
   # Routing logic: fallback requests for React Router.

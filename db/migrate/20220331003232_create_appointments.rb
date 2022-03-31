@@ -7,8 +7,8 @@ class CreateAppointments < ActiveRecord::Migration[6.1]
       t.string :location
       t.string :img_url
       t.string :description
-      t.integer :user_id
-      t.integer :client_id
+      t.belongs_to :user, null: false, foreign_key: true
+      t.belongs_to :client, null: false, foreign_key: true
       t.timestamps
     end
   end

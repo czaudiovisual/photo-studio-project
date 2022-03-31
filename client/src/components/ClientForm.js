@@ -27,14 +27,11 @@ function ClientForm({ currentUser, addClient }) {
                 email,
                 user_id: currentUser.id
             }),
-        }).then((response) => {
-            if (response.ok) {
-                response.json().then((client) => {
-                    addClient(client)
-                    setSubmitted(true)
-                })
-            }
-        })
+        }).then(res => res.json())
+            .then(client => {
+                addClient(client)
+                setSubmitted(true)
+            })
     }
 
     return (

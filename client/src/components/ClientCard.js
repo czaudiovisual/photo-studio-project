@@ -1,9 +1,10 @@
 import { useState } from "react"
 import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
+import ClientEditForm from "./ClientEditForm"
 
-const ClientCard = ({ client, removeClient, editClient }) => {
-    const [editClientForm, setEditClientForm] = useState(false)
+const ClientCard = ({ client, removeClient, currentUser, clientEdit }) => {
+    const [clientEditForm, setClientEditForm] = useState(false)
     const [editButton, setEditButton] = useState("Show edit Form")
 
     function handleDeleteClient(client) {
@@ -15,8 +16,8 @@ const ClientCard = ({ client, removeClient, editClient }) => {
     }
 
     function handleEditButtonClick() {
-        setEditClientForm(!editClientForm)
-        !editClientForm ? setEditClientForm("Hide Edit Form") : setEditButton("Show edit Form")
+        setClientEditForm(!clientEditForm)
+        !clientEditForm ? setEditButton("Hide Edit Form") : setEditButton("Show edit Form")
     }
 
     return (
@@ -29,9 +30,10 @@ const ClientCard = ({ client, removeClient, editClient }) => {
                         <Card.Subtitle className="mb-2 text-muted">Number: {client.number}</Card.Subtitle>
                         <Card.Subtitle className="mb-4 text-muted">E-mail: {client.email}</Card.Subtitle>
                         <div className="d-grid gap-2">
-                <Button variant="danger" size="sm" onClick={event => handleDeleteClient(client)}>Delete</Button>
-                <Button variant="primary" size="sm" onClick={event => handleEditButtonClick()}>{editButton}</Button>
+                            <Button variant="danger" size="sm" onClick={event => handleDeleteClient(client)}>Delete</Button>
+                            <Button variant="primary" size="sm" onClick={event => handleEditButtonClick()}>{editButton}</Button>
                         </div>
+                        {clientEditForm ? <ClientEditForm handleEditButtonClick={handleEditButtonClick} clientEdit={clientEdit} client={client} currentUser={currentUser}/> : null}
                     </Card.Body>
                 </Card>
             </div>

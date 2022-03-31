@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react"
 import ClientCard from './ClientCard'
 
-function ClientsComponent() {
+function Clients({ currentUser }) {
     const [clients, setClients] = useState([])
 
-    function removeClient(cli) {
-        setClients((clients) => clients.filter(client => client.id !== cli.id))
-    }
+    function removeClient(client) {
+        setClients((clients) => clients.filter(cli => cli.id !== client.id))
+      }
 
-    function editClient(client) {
+    function clientEdit(client) {
         const edited = clients.map(cli => {
             if (client.id === cli.id) {
                 return client
@@ -19,12 +19,14 @@ function ClientsComponent() {
     }
 
     useEffect(() => {
-        fetch("/clients")
+        fetch(`/users/${currentUser.id}`)
             .then((res) => res.json())
-            .then(setClients)
-    }, [])
+            .then((data) => {
+                setClients(data.clients)
+            })// eslint-disable-next-line 
+    }, []) 
 
-    const renderClients = clients.map((client) => <ClientCard editClient={editClient} client={client} key={client.id} removeClient={removeClient} />)
+    const renderClients = clients?.map((cli) => <ClientCard clientEdit={clientEdit} currentUser={currentUser} client={cli} key={cli.id}  removeClient={removeClient}/>)
 
     return (
         <div className="App">
@@ -38,4 +40,5 @@ function ClientsComponent() {
         </div>
     )
 }
-export default ClientsComponent
+
+export default Clients

@@ -1,4 +1,5 @@
 class ClientsController < ApplicationController
+
     def index
         clients = Client.all
         render json: clients, status: :ok    
@@ -16,7 +17,7 @@ class ClientsController < ApplicationController
 
     def update
         client = find_client
-        client = Client.update!(client_params)
+        client.update!(client_params)
         render json: client, status: :ok
 
     end
@@ -34,6 +35,6 @@ class ClientsController < ApplicationController
     end
 
     def client_params
-        params.require(:client).permit(:client_name, :number, :img_url, :email, :appointment_id, :user_id)
+        params.require(:client).permit(:client_name, :number, :img_url, :email, :user_id)
     end
 end
