@@ -1,7 +1,9 @@
 # Clapstone Project: Photo Studio Manager
 
 ## Description
-Photo Studio manager is an app that creates appointments for clients that are requiring photography services.
+Photo Studio manager is an app that creates appointments for clients that are requiring photography services. You can start the application by creating an account with basic information. After all the process of signing in, you can start adding clients, and also the appointments that each client have.
+
+<img width="1427" alt="Screen Shot 2022-04-03 at 5 52 31 PM" src="https://user-images.githubusercontent.com/79618247/161450431-2be49f23-9c55-4c51-a66e-20b190738420.png">
 
 ## To get started
 
