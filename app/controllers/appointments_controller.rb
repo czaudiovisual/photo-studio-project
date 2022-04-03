@@ -1,6 +1,7 @@
 class AppointmentsController < ApplicationController
+
     def index
-        appointments = Appointment.all
+        appointments = Appointment.order(updated_at: :desc)
         render json: appointments, status: :ok    
     end
     
@@ -11,7 +12,7 @@ class AppointmentsController < ApplicationController
 
     def create
         appointment = Appointment.create!(appointment_params)
-        render json: appointment, status: :okcreated
+        render json: appointment, status: :created
     end
 
     def update
@@ -22,6 +23,7 @@ class AppointmentsController < ApplicationController
     end
 
     def destroy
+    
         appointment = find_appointment
         appointment.destroy
         head :no_content

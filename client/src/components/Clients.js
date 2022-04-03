@@ -27,7 +27,7 @@ function Clients({ currentUser }) {
             })// eslint-disable-next-line 
     }, []) 
 
-    const renderClients = clients?.map((cli) => <ClientCard clientEdit={clientEdit} currentUser={currentUser} client={cli} key={cli.id}  removeClient={removeClient}/>)
+    const renderClients = clients?.map((cli) => <ClientCard clientEdit={clientEdit} currentUser={currentUser} client={cli} key={cli.id} removeClient={removeClient}/>)
 
     return (
         <div className="App">

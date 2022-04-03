@@ -7,6 +7,7 @@ import { Button } from 'react-bootstrap'
 import Clients from './components/Clients'
 import Appointments from './components/Appointments'
 import ClientForm from './components/ClientForm'
+import AppointmentForm from './components/AppointmentForm'
 
 
 
@@ -36,9 +37,9 @@ function App() {
     setClients([...clients, client])
   }
 
-  // function addAppointment(appointment) {
-  //   setAppointments([...appointments, appointment])
-  // }
+  function addAppointment(appointment) {
+    setAppointments([...appointments, appointment])
+  }
 
 
   if (!currentUser) return <LoginForm setCurrentUser={setCurrentUser} />
@@ -60,6 +61,9 @@ function App() {
             </Route>
             <Route exact path="/appointments" component={Appointments}>
               <Appointments currentUser={currentUser} />
+            </Route>
+            <Route exact path="/appointments/new" key={clients.id}  currentUSer={currentUser} addAppointment={addAppointment}>
+              <AppointmentForm currentUser={currentUser} />
             </Route>
           </Switch>
         </Router>

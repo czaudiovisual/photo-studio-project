@@ -13,6 +13,7 @@ function NavigationBar() {
                         <Nav.Link href="/">Clients</Nav.Link>
                         <Nav.Link href="/clients/new">Add Client</Nav.Link>
                         <Nav.Link href="/appointments">Appointments</Nav.Link>
+                        <Nav.Link href="/appointments/new">Add Appointment</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

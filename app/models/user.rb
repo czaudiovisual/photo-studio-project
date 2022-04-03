@@ -1,10 +1,11 @@
 class User < ApplicationRecord
     
-    has_many :clients
-    has_many :appointments, through: :clients
+    has_secure_password
+    
+    has_many :appointments
+    has_many :clients, through: :appointments
     
     validates_presence_of :name, :photo_style
     validates :username, presence: true, uniqueness: true
 
-    has_secure_password
 end

@@ -8,6 +8,7 @@ function AppointmentEditForm({ currentUser, appointment, appointmentEdit, handle
     const [date, setDate] = useState(appointment.date)
     const [location, setLocation] = useState(appointment.location)
     const [description, setDescription] = useState(appointment.description)
+    const [clientId, setClientId] = useState(appointment.client_id)
 
     function handleOnSubmit(event) {
         event.preventDefault()
@@ -17,6 +18,7 @@ function AppointmentEditForm({ currentUser, appointment, appointmentEdit, handle
         setDate("")
         setLocation("")
         setDescription("")
+        setClientId("")
         fetch(`/appointments/${appointment.id}`, {
             method: "PATCH",
             headers: {
@@ -29,12 +31,13 @@ function AppointmentEditForm({ currentUser, appointment, appointmentEdit, handle
                 date,
                 location,
                 description,
-                user_id: currentUser.id
+                user_id: currentUser.id,
+                client_id: clientId
             }),
         })
             .then(res => res.json())
-            .then(appoint => {
-                appointmentEdit(appoint)
+            .then(app => {
+                appointmentEdit(app)
                 handleEditButton()
             })
     }

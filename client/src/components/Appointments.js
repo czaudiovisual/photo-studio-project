@@ -26,7 +26,7 @@ function Appointments({ currentUser }) {
             })// eslint-disable-next-line 
     }, []) 
 
-    const renderAppointments = appointments?.map((appoint) => <AppointmentCard appointmentEdit={appointmentEdit} currentUser={currentUser} appointment={appoint} key={appoint.id} removeAppointment={removeAppointment}/>)
+    const renderAppointments = appointments?.map((app) => <AppointmentCard appointmentEdit={appointmentEdit} currentUser={currentUser} appointment={app} key={app.id} removeAppointment={removeAppointment}/>)
 
     return (
         <div className="App">
