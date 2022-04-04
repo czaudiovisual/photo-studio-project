@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :appointments
   resources :clients
   resources :users
-
+  
+  get '/order/clients', to: "clients#order_name"
+  get '/order/appointments', to: "appointments#order_date"
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
   post "/login", to: "sessions#create"

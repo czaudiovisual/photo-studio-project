@@ -28,6 +28,11 @@ class ClientsController < ApplicationController
         head :no_content
     end
 
+    def order_name
+        clients = Client.all.order(client_name: :asc)
+        render json: clients, status: :ok
+    end
+
     private
 
     def find_client

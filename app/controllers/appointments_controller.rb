@@ -23,10 +23,14 @@ class AppointmentsController < ApplicationController
     end
 
     def destroy
-    
         appointment = find_appointment
         appointment.destroy
         head :no_content
+    end
+
+    def order_date
+        appointments = Appointment.all.order(date: :asc)
+        render json: appointments, status: :ok
     end
 
     private

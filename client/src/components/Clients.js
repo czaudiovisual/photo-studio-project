@@ -1,4 +1,4 @@
-
+import { Button } from 'react-bootstrap'
 import React, { useEffect, useState } from "react"
 import ClientCard from './ClientCard'
 
@@ -7,7 +7,7 @@ function Clients({ currentUser }) {
 
     function removeClient(client) {
         setClients((clients) => clients.filter(cli => cli.id !== client.id))
-      }
+    }
 
     function clientEdit(client) {
         const edited = clients.map(cli => {
@@ -25,9 +25,16 @@ function Clients({ currentUser }) {
             .then((data) => {
                 setClients(data.clients)
             })// eslint-disable-next-line 
-    }, []) 
+    }, [])
 
-    const renderClients = clients?.map((cli) => <ClientCard clientEdit={clientEdit} currentUser={currentUser} client={cli} key={cli.id} removeClient={removeClient}/>)
+    const orderByName = () => {
+        fetch("/order/clients")
+            .then((res) => res.json())
+            .then((order) => setClients(order))
+    };
+
+
+    const renderClients = clients&&clients.map((cli) => <ClientCard clientEdit={clientEdit} currentUser={currentUser} client={cli} key={cli.id} removeClient={removeClient}/>)
 
     return (
         <div className="App">
@@ -35,6 +42,8 @@ function Clients({ currentUser }) {
                 <br />
                 <br />
                 <h1>Clients</h1>
+                <br />
+                <Button variant="outline-secondary" size="sm" onClick={orderByName}>order by name</Button>
                 <br />
                 {renderClients}
             </div>

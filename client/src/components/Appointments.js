@@ -1,3 +1,4 @@
+import { Button } from 'react-bootstrap'
 import React, { useEffect, useState } from "react"
 import AppointmentCard from './AppointmentCard'
 
@@ -26,7 +27,13 @@ function Appointments({ currentUser }) {
             })// eslint-disable-next-line 
     }, []) 
 
-    const renderAppointments = appointments?.map((app) => <AppointmentCard appointmentEdit={appointmentEdit} currentUser={currentUser} appointment={app} key={app.id} removeAppointment={removeAppointment}/>)
+    const orderByDate = () => {
+        fetch("/order/appointments")
+            .then((res) => res.json())
+            .then((order) => setAppointments(order))
+    };
+
+    const renderAppointments = appointments&&appointments.map((app) => <AppointmentCard appointmentEdit={appointmentEdit} currentUser={currentUser} appointment={app} key={app.id} removeAppointment={removeAppointment} order={orderByDate}/>)
 
     return (
         <div className="App">
@@ -34,6 +41,8 @@ function Appointments({ currentUser }) {
                 <br />
                 <br />
                 <h1>Appointments</h1>
+                <br />
+                <Button variant="outline-secondary" size="sm" onClick={orderByDate}>Order by Date</Button>
                 <br />
                 {renderAppointments}
             </div>

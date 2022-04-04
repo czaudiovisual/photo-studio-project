@@ -1,8 +1,6 @@
-
 import React, { useState } from "react"
-import { Redirect } from "react-router-dom"
+import { Redirect, useHistory } from "react-router-dom"
 import { Button, Alert } from 'react-bootstrap'
-import { useHistory } from "react-router"
 import ClientsDropdown from './ClientsDropdown'
 
 function AppointmentForm({ currentUser, addAppointment }) {
@@ -14,7 +12,7 @@ function AppointmentForm({ currentUser, addAppointment }) {
     const [description, setDescription] = useState("")
     const [clientId, setClientId] = useState("")
     const [errors, setErrors] = useState("")
-    const [submitted, setSubmitted] = useState(false)
+    const [submit, setSubmit] = useState(false)
     const history = useHistory()
 
     function handleOnSubmit(event) {
@@ -45,17 +43,18 @@ function AppointmentForm({ currentUser, addAppointment }) {
             if (response.ok) {
                 response.json().then((app) => {
                     addAppointment(app)
-                    setSubmitted(true)
+                    setSubmit(true)
+                }).catch((error) => {
                     history.push('/appointments')
                 })
             } else {
                 response.json().then(errors => {
                     setErrors(errors.errors)
                 })
-            }
-        })
-    }
-
+            } 
+            })
+        }
+        
     const displayError = () => {
         return errors.map(error => {
             return <div className="alert alert-danger" role="alert">{error}</div>
@@ -64,12 +63,11 @@ function AppointmentForm({ currentUser, addAppointment }) {
 
     return (
         <div>
-
             <br />
             <br />
             <h1>Add Appointment</h1>
             <br />
-            {submitted ? <Redirect to="/appointments" /> :
+            {submit ? <Redirect to="/appointments" /> :
                 <div>
                     <div className="form-outsider">
                         <div className="form-container">
@@ -130,4 +128,4 @@ function AppointmentForm({ currentUser, addAppointment }) {
     )
 }
 
-export default AppointmentForm
+export default AppointmentForm 
