@@ -45,7 +45,7 @@ function LoginForm({ setCurrentUser }) {
                             value={username}
                             placeholder="Username"
                             type="text"
-                            id="user"/>
+                            id="user" />
                         <input
                             onChange={(event) => setPassword(event.target.value)}
                             className="form-field"

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   
   get '/order/clients', to: "clients#order_name"
   get '/order/appointments', to: "appointments#order_date"
+  get '/count/appointments', to: "clients#appointments_count"
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
   post "/login", to: "sessions#create"

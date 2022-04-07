@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import ClientEditForm from "./ClientEditForm"
 
-const ClientCard = ({ client, removeClient, currentUser, clientEdit }) => {
+const ClientCard = ({ client, removeClient, currentUser, clientEdit, countAppointments }) => {
     const [clientEditForm, setClientEditForm] = useState(false)
     const [editButton, setEditButton] = useState("Show edit Form")
 
@@ -29,6 +29,7 @@ const ClientCard = ({ client, removeClient, currentUser, clientEdit }) => {
                         <Card.Title>{client.client_name}</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">Number: {client.number}</Card.Subtitle>
                         <Card.Subtitle className="mb-4 text-muted">E-mail: {client.email}</Card.Subtitle>
+                        <Card.Subtitle className="mb-4 text-muted">Appointments:<p>{client.countAppointments}</p></Card.Subtitle>
                         <div className="d-grid gap-2">
                             <Button variant="danger" size="sm" onClick={event => handleDeleteClient(client)}>Delete</Button>
                             <Button variant="primary" size="sm" onClick={event => handleEditButtonClick()}>{editButton}</Button>

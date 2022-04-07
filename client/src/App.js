@@ -41,6 +41,11 @@ function App() {
     setAppointments([...appointments, appointment])
   }
 
+  const countAppointments = () => {
+    fetch("/count/appointments")
+        .then((res) => res.json())
+        .then((count) => setClients(count))
+};
 
   if (!currentUser) return <LoginForm setCurrentUser={setCurrentUser} />
 
@@ -54,7 +59,7 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/" component={Clients}>
-              <Clients currentUser={currentUser} />
+              <Clients currentUser={currentUser} countAppointments={countAppointments}/>
             </Route>
             <Route exact path="/clients/new">
               <ClientForm key={clients.id} currentUser={currentUser} addClient={addClient} />

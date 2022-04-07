@@ -33,6 +33,11 @@ class ClientsController < ApplicationController
         render json: clients, status: :ok
     end
 
+    def appointments_count
+        client = client.find_client.appointments.count
+        render json: client, status: :ok
+    end
+
     private
 
     def find_client

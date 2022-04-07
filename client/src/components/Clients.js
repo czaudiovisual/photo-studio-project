@@ -2,7 +2,7 @@ import { Button } from 'react-bootstrap'
 import React, { useEffect, useState } from "react"
 import ClientCard from './ClientCard'
 
-function Clients({ currentUser }) {
+function Clients({ currentUser, countAppointments }) {
     const [clients, setClients] = useState([])
 
     function removeClient(client) {
@@ -33,8 +33,7 @@ function Clients({ currentUser }) {
             .then((order) => setClients(order))
     };
 
-
-    const renderClients = clients&&clients.map((cli) => <ClientCard clientEdit={clientEdit} currentUser={currentUser} client={cli} key={cli.id} removeClient={removeClient}/>)
+    const renderClients = clients&&clients.map((cli) => <ClientCard clientEdit={clientEdit} currentUser={currentUser} client={cli} key={cli.id} removeClient={removeClient} countAppointments={countAppointments}/>)
 
     return (
         <div className="App">
